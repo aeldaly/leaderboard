@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Game < ActiveRecord::Base
   include ActiveModel::Validations
   validates_with GameValidator

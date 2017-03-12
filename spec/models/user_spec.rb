@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -14,13 +15,13 @@ RSpec.describe User, type: :model do
       games[Date.today] = [{
         opponent: user_2.email,
         result: 'W',
-        score: "21 - 19"
+        score: '21 - 19'
       }]
 
       games[Date.yesterday] = [{
         opponent: user_2.email,
         result: 'L',
-        score: "19 - 21"
+        score: '19 - 21'
       }]
 
       games

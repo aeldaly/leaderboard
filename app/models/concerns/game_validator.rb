@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class GameValidator < ActiveModel::Validator
   def validate(record)
     if record.winner_score < record.loser_score + 2
