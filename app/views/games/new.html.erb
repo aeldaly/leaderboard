@@ -1,0 +1,53 @@
+<h1 class="page-header">Log Game</h1>
+
+<%= form_tag games_path do %>
+  <% if @game.errors.any? %>
+    <ul>
+      <% @game.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="row">
+    <div class="col-xs-4">Date Played:</div>
+    <div class="col-xs-8">
+      <div class="form-group">
+        <%= date_field_tag :date, @date %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4">Opponent:</div>
+    <div class="col-xs-8">
+      <div class="form-group">
+        <%= select_tag "opponent",
+          options_from_collection_for_select(@opponents, "id", "email", @opponent&.id),
+          class: "input-group",
+          include_blank: true
+        %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4">Your Score:</div>
+    <div class="col-xs-8">
+      <div class="form-group">
+        <%= text_field_tag "your_score", @your_score %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4">Their Score:</div>
+    <div class="col-xs-8">
+      <div class="form-group">
+        <%= text_field_tag "their_score", @their_score %>
+      </div>
+    </div>
+  </div>
+
+  <%= submit_tag "Save" %> or <%= link_to "cancel", root_path %>
+<% end %>
