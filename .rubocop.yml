@@ -1,4 +1,5 @@
 AllCops:
+  TargetRubyVersion: 2.3
   Include:
     - Rakefile
     - config.ru
@@ -14,4 +15,7 @@ Metrics/AbcSize:
   Enabled: false
 
 Metrics/MethodLength:
+  Enabled: false
+
+Metrics/LineLength:
   Enabled: false
