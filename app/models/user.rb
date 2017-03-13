@@ -9,9 +9,11 @@ class User < ActiveRecord::Base
     output = ActiveSupport::OrderedHash.new
 
     won_games.each do |game|
-      output[game.date] ||= []
+      game_date = game.date.to_s
 
-      output[game.date] << {
+      output[game_date] ||= []
+
+      output[game_date] << {
         opponent: game.loser.email,
         result: 'W',
         score: "#{game.winner_score} - #{game.loser_score}"
@@ -19,9 +21,11 @@ class User < ActiveRecord::Base
     end
 
     lost_games.each do |game|
-      output[game.date] ||= []
+      game_date = game.date.to_s
 
-      output[game.date] << {
+      output[game_date] ||= []
+
+      output[game_date] << {
         opponent: game.winner.email,
         result: 'L',
         score: "#{game.loser_score} - #{game.winner_score}"
