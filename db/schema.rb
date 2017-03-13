@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20170312232647) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "games", force: :cascade do |t|
     t.integer  "winner_id",    null: false
     t.integer  "loser_id",     null: false
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 20170312232647) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "games", ["loser_id"], name: "index_games_on_loser_id"
-  add_index "games", ["winner_id"], name: "index_games_on_winner_id"
+  add_index "games", ["loser_id"], name: "index_games_on_loser_id", using: :btree
+  add_index "games", ["winner_id"], name: "index_games_on_winner_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170312232647) do
     t.integer  "rating",                 default: 0
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
